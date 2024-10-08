@@ -1,4 +1,3 @@
-/* Global Styling */
 * {
     margin: 0;
     padding: 0;
@@ -6,16 +5,15 @@
 }
 
 body {
-    font-family: 'Georgia', serif; /* Classic serif font */
-    background-color: #fdf6e3; /* Light cream background */
-    color: #3e3e3e; /* Dark gray text */
+    font-family: 'Georgia', serif; 
+    background-color: #fdf6e3; 
+    color: #3e3e3e; 
     padding: 20px;
-    background-image: url('https://www.transparenttextures.com/patterns/wood.png'); /* Subtle wood texture */
+    background-image: url('https://www.transparenttextures.com/patterns/wood.png'); 
 }
 
-/* Header */
 header {
-    background-color: #b5651d; /* Warm brown color */
+    background-color: #b5651d; 
     padding: 30px 0;
     text-align: center;
     color: #fff;
@@ -27,7 +25,6 @@ header h1 {
     letter-spacing: 3px;
 }
 
-/* Navigation */
 nav ul {
     list-style: none;
     margin-top: 10px;
@@ -46,10 +43,9 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #dcdcdc; /* Light color on hover */
+    color: #dcdcdc; 
 }
 
-/* Menu Section */
 .menu-section {
     margin: 50px 0;
     text-align: center;
@@ -57,7 +53,7 @@ nav ul li a:hover {
 
 .menu-section h2 {
     font-size: 3em;
-    color: #7d5c3f; /* Soft brown color */
+    color: #7d5c3f; 
 }
 
 .menu-container {
@@ -66,9 +62,8 @@ nav ul li a:hover {
     justify-content: center;
 }
 
-/* Menu Item */
 .menu-item {
-    background-color: #fff; /* White background for cards */
+    background-color: #fff; 
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     margin: 15px;
@@ -80,7 +75,7 @@ nav ul li a:hover {
 
 .menu-item:hover {
     transform: scale(1.05);
-    background-color: #f7e6d7; /* Light background on hover */
+    background-color: #f7e6d7; 
 }
 
 .menu-item h3 {
@@ -92,9 +87,8 @@ nav ul li a:hover {
     color: #b5651d;
 }
 
-/* Edit Modal Styling */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -102,16 +96,16 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); /* Dark background with opacity */
+    background-color: rgba(0, 0, 0, 0.7); 
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 10% auto; /* Centered */
+    margin: 10% auto; 
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Responsive */
-    max-width: 500px; /* Max width */
+    width: 80%; 
+    max-width: 500px; 
     border-radius: 10px;
 }
 
@@ -129,17 +123,16 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-/* Input Styles */
 input, textarea {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 10px 0;
-    width: 100%; /* Full width */
+    width: 100%; 
 }
 
 button {
-    background-color: #b5651d; /* Same as header */
+    background-color: #b5651d; 
     color: #fff;
     border: none;
     padding: 12px 15px;
@@ -150,10 +143,9 @@ button {
 }
 
 button:hover {
-    background-color: #7d5c3f; /* Darker on hover */
+    background-color: #7d5c3f; 
 }
 
-/* Footer */
 footer {
     background-color: #b5651d;
     padding: 20px;
