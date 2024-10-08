@@ -64,11 +64,27 @@ async function fetchMenu() {
 }
 
 // Function to update a menu item
-async function updateItem(id) {
-    const name = document.getElementById('edit-name').value;
-    const price = document.getElementById('edit-price').value;
-    const category = document.getElementById('edit-category').value;
-    const description = document.getElementById('edit-description').value;
+async function updateItem() {
+    const id = document.getElementById('edit-id').value;
+    const name = document.getElementById('edit-name').value.trim();
+    const price = parseFloat(document.getElementById('edit-price').value);
+    const category = document.getElementById('edit-category').value.trim();
+    const description = document.getElementById('edit-description').value.trim();
+
+    // Validates input
+    if (!name || isNaN(price) || price < 0 || !category || !description) {
+        alert('Please fill in all the fields correctly.');
+        return; // Stop execution if validation fails
+    }
+
+    // Debugging output
+    console.log('Updating item with data:', {
+        id: id,
+        name: name,
+        price: price,
+        category: category,
+        description: description
+    });
 
     try {
         const response = await fetch(`https://cafe-menu-api-ron-cada-projects.vercel.app/menu/${id}`, {
@@ -77,7 +93,7 @@ async function updateItem(id) {
             body: JSON.stringify({
                 id: id,
                 name: name,
-                price: parseFloat(price),
+                price: price,
                 category: category,
                 description: description,
                 is_available: true  // Optional, set default or retain the value
@@ -85,7 +101,8 @@ async function updateItem(id) {
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            const errorData = await response.json(); // Capture error response
+            throw new Error(`HTTP error! status: ${response.status} - ${errorData.message || ''}`);
         }
 
         const data = await response.json();
@@ -96,8 +113,10 @@ async function updateItem(id) {
         closeEditForm();
     } catch (error) {
         console.error('Error updating item:', error);
+        alert(`Error updating item: ${error.message}`); // Alert the user about the error
     }
 }
+
 
 // Function to close the edit form
 function closeEditForm() {
@@ -108,25 +127,24 @@ function closeEditForm() {
     }
 }
 
-// Function to show the edit form
+// Function to show the edit form in a modal
 function showEditForm(item) {
-    // Create a div for the edit form
-    const editFormDiv = document.createElement('div');
-    editFormDiv.classList.add('edit-form');
+    // Set values in the edit form
+    document.getElementById('edit-id').value = item.id;
+    document.getElementById('edit-name').value = item.name;
+    document.getElementById('edit-price').value = item.price;
+    document.getElementById('edit-category').value = item.category;
+    document.getElementById('edit-description').value = item.description;
 
-    const formHTML = `
-        <h3>Edit Menu Item</h3>
-        <input type="hidden" id="edit-id" value="${item.id}" />
-        <input type="text" id="edit-name" value="${item.name}" placeholder="Item Name" required />
-        <input type="number" id="edit-price" value="${item.price}" placeholder="Item Price" required />
-        <input type="text" id="edit-category" value="${item.category}" placeholder="Item Category" required />
-        <textarea id="edit-description" placeholder="Item Description" required>${item.description}</textarea>
-        <button type="button" onclick="updateItem(${item.id})">Update Item</button>
-        <button type="button" onclick="closeEditForm()">Cancel</button>
-    `;
+    // Display the modal
+    const modal = document.getElementById('edit-modal');
+    modal.style.display = 'block'; // Show the modal
+}
 
-    editFormDiv.innerHTML = formHTML;
-    document.body.appendChild(editFormDiv);  // Append the edit form to the body or container
+// Function to close the edit form
+function closeEditForm() {
+    const modal = document.getElementById('edit-modal');
+    modal.style.display = 'none'; // Hide the modal
 }
 
 // Function to delete a menu item
@@ -193,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert(`Error creating item: ${error.message}`); // Alert the user about the error
         }
     });
+    //Search By ID function
     document.getElementById('search-btn').addEventListener('click', function () {
         const searchInput = document.getElementById('search-input').value.toLowerCase();
         const menuItems = document.querySelectorAll('.menu-item');
@@ -208,3 +227,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
 });
+
