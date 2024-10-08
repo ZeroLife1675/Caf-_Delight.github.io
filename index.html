@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Café Delight - Menu</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="functionstyle.css">
 </head>
 <body>
     <header>
@@ -49,6 +49,22 @@
         <p>&copy; 2024 Café Delight. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
+        <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditForm()">&times;</span>
+            <h3>Edit Menu Item</h3>
+            <input type="hidden" id="edit-id" value="" />
+            <input type="text" id="edit-name" placeholder="Item Name" required />
+            <input type="number" id="edit-price" placeholder="Item Price" required />
+            <input type="text" id="edit-category" placeholder="Item Category" required />
+            <textarea id="edit-description" placeholder="Item Description" required></textarea>
+            <button type="button" onclick="updateItem()">Update Item</button>
+            <button type="button" onclick="closeEditForm()">Cancel</button>
+        </div>
+    </div>
+
+
+    <script src="funcTIONS.js"></script>
 </body>
 </html>
